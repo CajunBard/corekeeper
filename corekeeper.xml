@@ -1,15 +1,9 @@
 <?xml version="1.0"?>
 <Container version="1">
-	<Name>
-		corekeeper
-	</Name>
-	<Repository>
-	</Repository>
-	<Registry>
-	</Registry>
-	<Network>
-		bridge
-	</Network>
+	<Name Default="corekeeper">corekeeper</Name>
+	<Repository>cajunbard/corekeeper</Repository>
+	<Registry>https://hub.docker.com/r/cajunbard/corekeeper</Registry>
+	<Network>bridge</Network>
 	<MyIP />
 	<Shell>
 		bash
@@ -17,7 +11,7 @@
 	<Privileged>
 		false
 	</Privileged>
-	<Support>
+	<Support>https://github.com/CajunBard/corekeeper/issues
 	</Support>
 	<Project>
 	</Project>
@@ -35,14 +29,12 @@
 		http://[IP]:[PORT:6767]
 	</WebUI>
 	<TemplateURL>
-		https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/bazarr.xml
+		https://github.com/CajunBard/corekeeper/blob/master/corekeeper.xml
 	</TemplateURL>
 	<Icon>
 		https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png
 	</Icon>
-	<ExtraParams>
-		--net=container:sabnzbdvpn
-	</ExtraParams>
+	<ExtraParams></ExtraParams>
 	<PostArgs />
 	<CPUset />
 	<DateInstalled>
