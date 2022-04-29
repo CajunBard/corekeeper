@@ -22,6 +22,18 @@ This variable is your Steam Password, required to authenticate to Steam using St
 
 `docker run -d --name=corekeeper -e STEAMUSER=<your steam username> -e STEAMPWD=<your steam password> -p 27015:27016/udp cajunbard/corekeeper:latest`
 
+**Example with Volume**
+
+```
+# Create the volume
+
+docker volume create corekeeper
+
+# Run using the volume
+
+docker run -d --name=corekeeper -e STEAMUSER=<your steam username> -e STEAMPWD=<your steam password> -p 27015:27016/udp -v corekeeper:/config:rw cajunbard/corekeeper:latest
+```
+
 ## Game ID
 
 Since Core Keeper uses a "Game ID" that players will need to use to join your server, you will need to make note of this after the container starts. The Game ID can be obtained by viewing the container's logs. Note that this Game ID can change anytime the server restarts. It can also be changed by an Admin within the game.
