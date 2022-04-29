@@ -17,7 +17,6 @@ VOLUME /config
 
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar xz
 
-COPY --chown=steam:steam corekeeper_install.txt /home/steam/
 COPY --chown=steam:steam entry.sh /home/steam/
 
 # Get's killed at the end
