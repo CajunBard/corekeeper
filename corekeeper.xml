@@ -26,13 +26,12 @@
 		Network:Other
 	</Category>
 	<WebUI>
-		http://[IP]:[PORT:6767]
 	</WebUI>
 	<TemplateURL>
 		https://github.com/CajunBard/corekeeper/blob/master/corekeeper.xml
 	</TemplateURL>
 	<Icon>
-		https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png
+		https://github.com/CajunBard/corekeeper/raw/master/icon.png
 	</Icon>
 	<ExtraParams></ExtraParams>
 	<PostArgs />
