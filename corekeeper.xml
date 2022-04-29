@@ -1,111 +1,26 @@
 <?xml version="1.0"?>
-<Container version="1">
-	<Name Default="corekeeper">corekeeper</Name>
-	<Repository>cajunbard/corekeeper</Repository>
-	<Registry>https://hub.docker.com/r/cajunbard/corekeeper</Registry>
-	<Network>bridge</Network>
-	<MyIP />
-	<Shell>
-		bash
-	</Shell>
-	<Privileged>
-		false
-	</Privileged>
-	<Support>https://github.com/CajunBard/corekeeper/issues
-	</Support>
-	<Project>
-	</Project>
-	<Overview>
-		Explore an endless cavern of creatures, relics and resources in a mining sandbox adventure for 1-8 players. Mine, build, fight, craft and farm to unravel the mystery of the ancient Core.
-		
-		[br][br][b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]
-		[b]STEAMUSER[/b]:  Your Steam username[br]
-		[b]STEAMPWD[/b]:  Your Steam password[br]
-	</Overview>
-	<Category>
-		Network:Other
-	</Category>
-	<WebUI>
-	</WebUI>
-	<TemplateURL>
-		https://github.com/CajunBard/corekeeper/blob/master/corekeeper.xml
-	</TemplateURL>
-	<Icon>
-		https://github.com/CajunBard/corekeeper/raw/master/icon.png
-	</Icon>
-	<ExtraParams></ExtraParams>
-	<PostArgs />
-	<CPUset />
-	<DateInstalled>
-		1650830841
-	</DateInstalled>
-	<DonateText />
-	<DonateLink />
-	<Description>
-		Explore an endless cavern of creatures, relics and resources in a mining sandbox adventure for 1-8 players. Mine, build, fight, craft and farm to unravel the mystery of the ancient Core.&#xD;
-		&#xD;
-		[br][br][b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]&#xD;
-		[b]STEAMUSER[/b]:  Your Steam username[br]&#xD;
-		[b]STEAMPWD[/b]:  Your Steam password[br]
-		Your Steam username and password are required for STEAMCMD to authenticate against Steam's server to validate that you have a license to Core Keeper.&#xD;
-		It is recommended that you dedicate an account for this purpose, and disable Steam Guard.
+<Container version="2">
+  <Name>corekeeper</Name>
+  <Repository>cajunbard/corekeeper</Repository>
+  <Registry>https://hub.docker.com/r/cajunbard/corekeeper</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/CajunBard/corekeeper/issues</Support>
+  <Project>https://github.com/CajunBard/corekeeper</Project>
+  <Overview>Explore an endless cavern of creatures, relics and resources in a mining sandbox adventure for 1-8 players. Mine, build, fight, craft and farm to unravel the mystery of the ancient Core.</Overview>
+  <Category>Other: Network:Other Status:Beta</Category>
+  <TemplateURL>https://github.com/CajunBard/corekeeper/blob/master/corekeeper.xml</TemplateURL>
+  <Icon>https://github.com/CajunBard/corekeeper/raw/master/icon.png</Icon>
+  <Description>Explore an endless cavern of creatures, relics and resources in a mining sandbox adventure for 1-8 players. Mine, build, fight, craft and farm to unravel the mystery of the ancient Core.&#xD;
+[br][br][b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]&#xD;
+[b]STEAMUSER[/b]:  Your Steam username[br]&#xD;
+[b]STEAMPWD[/b]:  Your Steam password[br]&#xD;
+Your Steam username and password are required for STEAMCMD to authenticate against Steam's server to validate that you have a license to Core Keeper.[br]&#xD;
+It is recommended that you dedicate an account for this purpose, and disable Steam Guard.&#xD;
 	</Description>
-	<Networking>
-		<Mode>
-			bridge
-		</Mode>
-		<Publish />
-	</Networking>
-	<Data>
-		<Volume>
-			<HostDir>
-				/mnt/user/appdata/corekeeper
-			</HostDir>
-			<ContainerDir>
-				/config
-			</ContainerDir>
-			<Mode>
-				rw
-			</Mode>
-		</Volume>
-	</Data>
-	<Environment>
-		<Variable>
-			<Value>
-				99
-			</Value>
-			<Name>
-				PUID
-			</Name>
-			<Mode />
-		</Variable>
-		<Variable>
-			<Value>
-				100
-			</Value>
-			<Name>
-				PGID
-			</Name>
-			<Mode />
-		</Variable>
-	</Environment>
-	<Labels />
-	<Config Name="PUID" Target="PUID" Default="" Mode="" Description="Container Variable: PUID" Type="Variable" Display="advanced-hide" Required="false" Mask="false">
-		99
-	</Config>
-	<Config Name="PGID" Target="PGID" Default="" Mode="" Description="Container Variable: PGID" Type="Variable" Display="advanced-hide" Required="false" Mask="false">
-		100
-	</Config>
-	<Config Name="Steam Username" Target="default" Default="default" Description="Steam Username" Type="Variable" Display="always" Required="true" Mask="false">
-		username
-	</Config>
-	<Config Name="Steam Password" Target="default" Default="default" Description="Steam Password" Type="Variable" Display="always" Required="true" Mask="true">
-		password
-	</Config>
-	<Config Type="Port" Name="Game Port 1" Target="27015" Default="27015" Mode="udp" Description="This is the main game server port. Port 27015/udp is the most common port for Steam games." Display="always" Required="true">
-		27015
-	</Config>
-	<Config Type="Port" Name="Game Port 1" Target="27016" Default="27016" Mode="udp" Description="This is the secondary game server port." Display="always" Required="true">
-		27016
-	</Config>
+  <Config Name="Steam Username" Target="STEAMUSER" Default="default" Mode="" Description="Steam Username" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Steam Password" Target="STEAMPWD" Default="default" Mode="" Description="Steam Password" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Game Port 1" Target="27015" Default="27015" Mode="udp" Description="This is the main game server port. Port 27015/udp is the most common port for Steam games." Type="Port" Display="always" Required="true" Mask="null"></Config>
+  <Config Name="Game Port 1" Target="27016" Default="27016" Mode="udp" Description="This is the secondary game server port." Type="Port" Display="always" Required="true" Mask="null"></Config>
+  <Config Name="Volume Path" Target="/config" Default="/mnt/user/appdata/corekeeper" Mode="rw" Description="Container Path: /config" Type="Path" Display="always" Required="true" Mask="false"></Config>
 </Container>
