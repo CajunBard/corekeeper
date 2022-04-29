@@ -10,13 +10,14 @@ if [ $STEAMPWD = default ]; then
         exit 1
 fi
 
-mkdir /config/Pugstorm
-mkdir /home/steam/.config
-mkdir /home/steam/.config/unity3d
+mkdir -p /config/Pugstorm
+mkdir -p /home/steam/.config/unity3d
 ln -s /config/Pugstorm /home/steam/.config/unity3d/Pugstorm
 
 /home/steam/steamcmd.sh +force_install_dir /config +login $STEAMUSER $STEAMPWD "+app_update 1621690 -beta experimental" validate +quit
 
+# the game looks for steamclient.so in the sdk64
+# but this doesn't exist by default with steamcmd
 ln -s /home/steam/linux64 /home/steam/.steam/sdk64
 
 cd /config/Server

@@ -10,6 +10,9 @@ RUN export DEBIAN_FRONTEND noninteractive && \
     mkdir /config && \
     chown steam:steam /config
 
+# needed for Xvfb to function
+RUN mkdir /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix
+
 USER steam
 
 ENV HOME /home/steam
@@ -24,14 +27,7 @@ RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.t
 
 COPY --chown=steam:steam entry.sh /home/steam/
 
-# Get's killed at the end
-RUN ./steamcmd.sh +login anonymous +quit || :
-USER root
-RUN mkdir /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix
-
 EXPOSE 27015/udp
 EXPOSE 27016/udp
-
-USER steam
 
 CMD ["/home/steam/entry.sh"]
