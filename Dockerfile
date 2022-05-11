@@ -16,8 +16,7 @@ RUN mkdir /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix
 USER steam
 
 ENV HOME /home/steam
-ENV STEAMUSER default
-ENV STEAMPWD default
+ENV branch main
 
 VOLUME /config
 

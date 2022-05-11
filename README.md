@@ -1,26 +1,26 @@
 # Introduction
 
-Core Keeper's dedicated server is currently provided in the experimental branch of the main game, so you will need to have a Steam account that is entitled to it. This image uses SteamCMD to download the game binaries to a persistent volume so that it doesn't have to be downloaded in full each time. It is recommended that you use a dedicated Steam account for this purpose that does not have Steam Guard enabled. Having Steam Guard enabled will cause an authentication error during startup.
+This image uses SteamCMD to download the server binaries to a persistent volume so that it doesn't have to be downloaded in full each time. 
 
-This is an _experimental_ release, which will be refined and improved over time.
+With release v0.3.12 of the game, Pugstorm also released the Dedicated Server under its own AppID on steam (yay!), which allows us use anonymous logon for SteamCMD. If you used a previous version of this image, you can remove the STEAMUSER and STEAMPWD variables from your docker run command.
 
 # Volume
 
-The game's persistent data has been symlinked to the path `/config` within the container. The world save is stored in `/config/Pugstorm/Core Keeper/experimental/DedicatedServer/worlds`. If you wish to persist this storage, create a volume on the host. 
+The game's persistent data has been symlinked to the path `/config` within the container. The world save is stored in `/config/Pugstorm/Core Keeper/DedicatedServer/worlds`. If you wish to persist this storage, create a volume on the host. An example of that is provided below.
+
+Release v.0.3.13.1 of the docker image will migrate an existing world from the previous experimental build if it is found. It will also make a backup in the root of the /config volume, just in case. The previous location was `/config/Pugstorm/Core Keeper/experimental/DedicatedServer/worlds`.
 
 # Variables
 
-## STEAMUSER
+## branch
 
-This variable is your Steam Username, required to authenticate to Steam using SteamCMD.
-
-## STEAMPWD
-
-This variable is your Steam Password, required to authenticate to Steam using SteamCMD.
+This variable allows you to specify the beta branch of the game and currently supports the `experimental` tag.
 
 **Example Run Usage**
 
-`docker run -d --name=corekeeper -e STEAMUSER=<your steam username> -e STEAMPWD=<your steam password> -p 27015:27016/udp cajunbard/corekeeper:latest`
+```
+docker run -d --name=corekeeper -p 27015:27016/udp cajunbard/corekeeper:latest
+```
 
 **Example with Volume**
 
@@ -31,7 +31,19 @@ docker volume create corekeeper
 
 # Run using the volume
 
-docker run -d --name=corekeeper -e STEAMUSER=<your steam username> -e STEAMPWD=<your steam password> -p 27015:27016/udp -v corekeeper:/config:rw cajunbard/corekeeper:latest
+docker run -d --name=corekeeper  -p 27015:27016/udp -v corekeeper:/config:rw cajunbard/corekeeper:latest
+```
+
+**Example with Volume on Experimental**
+
+```
+# Create the volume
+
+docker volume create corekeeper
+
+# Run using the volume
+
+docker run -d --name=corekeeper  -p 27015:27016/udp -v corekeeper:/config:rw -e branch=experimental cajunbard/corekeeper:latest
 ```
 
 ## Game ID
